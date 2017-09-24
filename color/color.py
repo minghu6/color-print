@@ -11,8 +11,10 @@ However, you should care about that
 """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import sys
+import platform
 
 __all__ = ['color_dict',
            'print_map',
@@ -20,12 +22,19 @@ __all__ = ['color_dict',
            'print_warn', 'print_warning',
            'print_err', 'print_error']
 
-from .__init__ import iswin, islinux
+
+def iswin():
+    return platform.platform().upper().startswith('WIN')
+
+
+def islinux():
+    return platform.platform().upper().startswith('LINUX')
+
 
 if islinux():
-    from . import color_sh as sh
+    from color.func import color_sh as sh
 elif iswin():
-    from . import color_cmd as cmd
+    from color.func import color_cmd as cmd
 
 
 def _remove_key(dic, keys):

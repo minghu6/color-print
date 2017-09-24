@@ -17,10 +17,8 @@ STD_INPUT_HANDLE = -10
 STD_OUTPUT_HANDLE = -11
 STD_ERROR_HANDLE = -12
 
-# 字体颜色定义 ,关键在于颜色编码，由2位十六进制组成，分别取0~f，前一位指的是背景色，后一位指的是字体色
-# 由于该函数的限制，应该是只有这16种，可以前景色与背景色组合。也可以几种颜色通过或运算组合，组合后还是在这16种颜色中
 
-# Windows CMD命令行 字体颜色定义 text colors
+# Windows CMD text colors
 FOREGROUND_BLACK = 0x00  # black.
 FOREGROUND_DARKBLUE = 0x01  # dark blue.
 FOREGROUND_DARKGREEN = 0x02  # dark green.
@@ -38,7 +36,7 @@ FOREGROUND_PINK = 0x0d  # pink.
 FOREGROUND_YELLOW = 0x0e  # yellow.
 FOREGROUND_WHITE = 0x0f  # white.
 
-# Windows CMD命令行 背景颜色定义 background colors
+# Windows CMD background colors
 BACKGROUND_DARKBLUE = 0x10  # dark blue.
 BACKGROUND_DARKGREEN = 0x20  # dark green.
 BACKGROUND_DARKSKYBLUE = 0x30  # dark skyblue.
@@ -92,105 +90,90 @@ class PrintColor:
         reset_color()
 
 
-# 暗蓝色
 # dark blue
 class PrintDarkBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKBLUE)
 
 
-# 暗绿色
 # dark green
 class PrintDarkGreen(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKGREEN)
 
 
-# 暗天蓝色
 # dark sky blue
 class PrintDarkSkyBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKSKYBLUE)
 
 
-# 暗红色
 # dark red
 class PrintDarkRed(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKRED)
 
 
-# 暗粉红色
 # dark pink
 class PrintDarkPink(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKPINK)
 
 
-# 暗黄色
 # dark yellow
 class PrintDarkYellow(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKYELLOW)
 
 
-# 暗白色
 # dark white
 class PrintDarkWhite(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKWHITE)
 
 
-# 暗灰色
 # dark gray
 class PrintDarkGray(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKGRAY)
 
 
-# 蓝色
 # blue
 class PrintBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_BLUE)
 
 
-# 绿色
 # green
 class PrintGreen(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_GREEN)
 
 
-# 天蓝色
 # sky blue
 class PrintSkyBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_SKYBLUE)
 
 
-# 红色
 # red
 class PrintRed(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_RED)
 
 
-# 粉红色
 # pink
 class PrintPink(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_PINK)
 
 
-# 黄色
 # yellow
 class PrintYellow(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_YELLOW)
 
 
-# 白色
 # white
 class PrintWhite(PrintColor):
     def __enter__(self):
@@ -199,28 +182,24 @@ class PrintWhite(PrintColor):
 
 ##################################################
 
-# 白底黑字
 # white bkground and black text
 class PrintWhiteBlack(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_BLACK | BACKGROUND_WHITE)
 
 
-# 白底黑字
 # white bkground and black text
 class PrintWhiteBlack_2(PrintColor):
     def __enter__(self):
         set_cmd_text_color(0xf0)
 
 
-# 黄底蓝字
 # white bkground and black text
 class PrintYellowRed(PrintColor):
     def __enter__(self):
         set_cmd_text_color(BACKGROUND_YELLOW | FOREGROUND_RED)
 
 
-# 原样输出
 # write origin text
 class PrintBlank(PrintColor):
     def __enter__(self):
