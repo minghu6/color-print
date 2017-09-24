@@ -14,6 +14,7 @@ Provide Color Support for all kinds of shell Stdin
      color.print_err or print_error
 ################################################################################
 """
+__version__ = '0.0.1'
 
 __all__ = ['color', ]
 

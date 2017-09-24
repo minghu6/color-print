@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 # !/usr/bin/env python3
+
 """
 ################################################################################
 Establish a Unified Color print across all kinds of os
@@ -8,6 +9,9 @@ However, you should care about that
          we only implemented 8^1=8 kind of basic color in color_sh
 ################################################################################
 """
+
+from __future__ import print_function
+
 import sys
 
 __all__ = ['color_dict',
@@ -50,15 +54,15 @@ def print_color(*objs, **kwargs):
         print(end=_end)
 
 
-def printWhite(*objs, **kwargs):
+def print_white(*objs, **kwargs):
     print_color(*objs, color='white', **kwargs)
 
 
-def printDarkPink(*objs, **kwargs):
+def print_dark_pink(*objs, **kwargs):
     print_color(*objs, color='darkpink', **kwargs)
 
 
-def printBlue(*objs, **kwargs):
+def print_blue(*objs, **kwargs):
     """
     Belive it ,It's an ugly print-color.
     Blue makes you blue :(
@@ -68,23 +72,23 @@ def printBlue(*objs, **kwargs):
     print_color(*objs, color='blue', **kwargs)
 
 
-def printDarkRed(*objs, **kwargs):
+def print_dark_red(*objs, **kwargs):
     print_color(*objs, color='darkred', **kwargs)
 
 
-def printDarkSkyBlue(*objs, **kwargs):
+def print_dark_skyblue(*objs, **kwargs):
     print_color(*objs, color='darkskyblue', **kwargs)
 
 
-def printDarkGreen(*objs, **kwargs):
+def print_dark_green(*objs, **kwargs):
     print_color(*objs, color='darkgreen', **kwargs)
 
 
-def printDarkYellow(*objs, **kwargs):
+def print_dark_yellow(*objs, **kwargs):
     print_color(*objs, color='darkyellow', **kwargs)
 
 
-def printBlank(*objs, **kwargs):
+def print_blank(*objs, **kwargs):
     print_color(*objs, color='blank', **kwargs)
 
 
@@ -100,13 +104,13 @@ def printBlank(*objs, **kwargs):
 #
 # You can also configure them with color_dict and print_map
 ################################################################################
-color_dict = {'green': printDarkGreen,
-              'darkskyblue': printDarkSkyBlue,
-              'yellow': printDarkYellow,
-              'red': printDarkRed,
-              'blue': printBlue,
-              'white': printWhite,
-              'purple': printDarkPink}
+color_dict = {'green': print_dark_green,
+              'darkskyblue': print_dark_skyblue,
+              'yellow': print_dark_yellow,
+              'red': print_dark_red,
+              'blue': print_blue,
+              'white': print_white,
+              'purple': print_dark_pink}
 
 print_map = {'info': color_dict['darkskyblue'],
              'ok': color_dict['green'],
@@ -123,7 +127,8 @@ def print_ok(*objs, **kwargs): print_map['ok'](*objs, **kwargs)
 def print_warning(*objs, **kwargs): print_map['warning'](*objs, **kwargs)
 
 
-def print_warn(*objs, **kwargs): print_warning(*objs, **kwargs)  # print_warning is too long
+def print_warn(*objs, **kwargs): print_warning(*objs,
+                                               **kwargs)  # print_warning is too long
 
 
 def print_error(*objs, **kwargs):
@@ -132,21 +137,22 @@ def print_error(*objs, **kwargs):
     print_map['error'](*objs, **kwargs)
 
 
-def print_err(*objs, **kwargs): print_error(*objs, **kwargs)  # print_error is too long
+def print_err(*objs, **kwargs): print_error(*objs,
+                                            **kwargs)  # print_error is too long
 
 
 if __name__ == '__main__':
     print('isLinux?%r' % islinux())
     print('isWindows?%r' % iswin())
 
-    printDarkRed({'a': 1, 'b': 2}, {'c': 3}, end='')
-    printDarkGreen([1, 2, 3], 4, sep='*', end='\n')
-    printDarkSkyBlue((1, 2, 3))
-    printDarkYellow({1, 2, 3})
+    print_dark_red({'a': 1, 'b': 2}, {'c': 3}, end='')
+    print_dark_green([1, 2, 3], 4, sep='*', end='\n')
+    print_dark_skyblue((1, 2, 3))
+    print_dark_yellow({1, 2, 3})
 
-    printDarkPink('abc' + 'def')
-    printBlue(printBlue)
-    printWhite('White Char')
+    print_dark_pink('abc' + 'def')
+    print_blue(print_blue)
+    print_white('White Char')
 
     print_info('info')
     print_ok('ok means that exec action succeed')

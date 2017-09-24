@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 # !/usr/bin/env python3
-from __future__ import print_function
 
 """
 ################################################################################
@@ -9,6 +8,7 @@ Only for Windows CMD 、PowerShell
 Can be compatibale with python2(>2.6)(Care: UniocoedEncodeError)
 ################################################################################
 """
+from __future__ import print_function
 
 import ctypes
 import sys
@@ -76,123 +76,123 @@ def set_cmd_text_color(color, handle=std_out_handle):
 
 
 # reset white
-def resetColor():
+def reset_color():
     if can_start_colorprint():
         set_cmd_text_color(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE)
 
 
 ###############################################################
 
-class printColor:
+class PrintColor:
     """
     __exit__:self, exc_type, exc_value, traceback
     """
 
     def __exit__(self, *args, **kwargs):
-        resetColor()
+        reset_color()
 
 
 # 暗蓝色
 # dark blue
-class printDarkBlue(printColor):
+class PrintDarkBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKBLUE)
 
 
 # 暗绿色
 # dark green
-class printDarkGreen(printColor):
+class PrintDarkGreen(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKGREEN)
 
 
 # 暗天蓝色
 # dark sky blue
-class printDarkSkyBlue(printColor):
+class PrintDarkSkyBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKSKYBLUE)
 
 
 # 暗红色
 # dark red
-class printDarkRed(printColor):
+class PrintDarkRed(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKRED)
 
 
 # 暗粉红色
 # dark pink
-class printDarkPink(printColor):
+class PrintDarkPink(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKPINK)
 
 
 # 暗黄色
 # dark yellow
-class printDarkYellow(printColor):
+class PrintDarkYellow(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKYELLOW)
 
 
 # 暗白色
 # dark white
-class printDarkWhite(printColor):
+class PrintDarkWhite(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKWHITE)
 
 
 # 暗灰色
 # dark gray
-class printDarkGray(printColor):
+class PrintDarkGray(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_DARKGRAY)
 
 
 # 蓝色
 # blue
-class printBlue(printColor):
+class PrintBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_BLUE)
 
 
 # 绿色
 # green
-class printGreen(printColor):
+class PrintGreen(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_GREEN)
 
 
 # 天蓝色
 # sky blue
-class printSkyBlue(printColor):
+class PrintSkyBlue(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_SKYBLUE)
 
 
 # 红色
 # red
-class printRed(printColor):
+class PrintRed(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_RED)
 
 
 # 粉红色
 # pink
-class printPink(printColor):
+class PrintPink(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_PINK)
 
 
 # 黄色
 # yellow
-class printYellow(printColor):
+class PrintYellow(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_YELLOW)
 
 
 # 白色
 # white
-class printWhite(printColor):
+class PrintWhite(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_WHITE)
 
@@ -201,28 +201,28 @@ class printWhite(printColor):
 
 # 白底黑字
 # white bkground and black text
-class printWhiteBlack(printColor):
+class PrintWhiteBlack(PrintColor):
     def __enter__(self):
         set_cmd_text_color(FOREGROUND_BLACK | BACKGROUND_WHITE)
 
 
 # 白底黑字
 # white bkground and black text
-class printWhiteBlack_2(printColor):
+class PrintWhiteBlack_2(PrintColor):
     def __enter__(self):
         set_cmd_text_color(0xf0)
 
 
 # 黄底蓝字
 # white bkground and black text
-class printYellowRed(printColor):
+class PrintYellowRed(PrintColor):
     def __enter__(self):
         set_cmd_text_color(BACKGROUND_YELLOW | FOREGROUND_RED)
 
 
 # 原样输出
 # write origin text
-class printBlank(printColor):
+class PrintBlank(PrintColor):
     def __enter__(self):
         pass
 
@@ -233,24 +233,24 @@ class printBlank(printColor):
 # with print_color('xxx'):
 #       print(xxx)
 ################################################################################
-print_map = {'darkblue': printDarkBlue,
-             'darkgreen': printDarkGreen,
-             'darkskyblue': printDarkSkyBlue,
-             'darkred': printDarkRed,
-             'darkpink': printDarkPink,
-             'darkyellow': printDarkYellow,
-             'darkwhite': printDarkWhite,
-             'darkgray': printDarkGray,
+print_map = {'darkblue': PrintDarkBlue,
+             'darkgreen': PrintDarkGreen,
+             'darkskyblue': PrintDarkSkyBlue,
+             'darkred': PrintDarkRed,
+             'darkpink': PrintDarkPink,
+             'darkyellow': PrintDarkYellow,
+             'darkwhite': PrintDarkWhite,
+             'darkgray': PrintDarkGray,
 
-             'blue': printBlue,
-             'green': printGreen,
-             'skyblue': printSkyBlue,
-             'red': printRed,
-             'pink': printPink,
-             'yellow': printYellow,
-             'white': printWhite,
+             'blue': PrintBlue,
+             'green': PrintGreen,
+             'skyblue': PrintSkyBlue,
+             'red': PrintRed,
+             'pink': PrintPink,
+             'yellow': PrintYellow,
+             'white': PrintWhite,
 
-             'blank': printBlank}
+             'blank': PrintBlank}
 
 
 def print_color(color='darkwhite'):
@@ -262,62 +262,59 @@ def print_color(color='darkwhite'):
     Returns: an printColor instance
 
     """
-    return print_map.get(color, printDarkWhite)()
+    return print_map.get(color, PrintDarkWhite)()
 
 
 if __name__ == '__main__':
     with print_color('darkblue'):
-        print(u'printDarkBlue:暗蓝色文字\n')
+        print(u'printDarkBlue: dark blue\n')
 
     with print_color('darkgreen'):
-        print(u'printDarkGreen:暗绿色文字\n')
-
-    with print_color('darkblue'):
-        print(u'printDarkSkyBlue:暗天蓝色文字\n')
+        print(u'printDarkGreen: dark green\n')
 
     with print_color('darkred'):
-        print(u'printDarkRed:暗红色文字\n')
+        print(u'printDarkRed: dark red\n')
 
     with print_color('darkpink'):
-        print(u'printDarkPink:暗粉红色文字\n')
+        print(u'printDarkPink: dark pink\n')
 
     with print_color('darkyellow'):
-        print(u'printDarkYellow:暗黄色文字\n')
+        print(u'printDarkYellow: dark yellow\n')
 
     with print_color('darkwhite'):
-        print(u'printDarkWhite:暗白色文字\n')
+        print(u'printDarkWhite: dark white\n')
 
     with print_color('darkgray'):
-        print(u'printDarkGray:暗灰色文字\n')
+        print(u'printDarkGray: dark gray\n')
 
     with print_color('blue'):
-        print(u'printBlue:蓝色文字\n')
+        print(u'printBlue: blue\n')
 
     with print_color('green'):
-        print(u'printGreen:绿色文字\n')
+        print(u'printGreen: green\n')
 
     with print_color('skyblue'):
-        print(u'printSkyBlue:天蓝色文字\n')
+        print(u'printSkyBlue: skyblue\n')
 
     with print_color('red'):
-        print(u'printRed:红色文字\n')
+        print(u'printRed: red\n')
 
     with print_color('pink'):
-        print(u'printPink:粉红色文字\n')
+        print(u'printPink: pink\n')
 
     with print_color('yellow'):
-        print(u'printYellow:黄色文字\n')
+        print(u'printYellow: yellow\n')
 
     with print_color('white'):
-        print(u'printWhite:白色文字\n')
+        print(u'printWhite: white\n')
 
     with print_color('blank'):
-        print(u'printBlank:原生颜色')
-    with printWhiteBlack():
-        print(u'printWhiteBlack:白底黑字输出\n')
+        print(u'printBlank: origin')
+    with PrintWhiteBlack():
+        print(u'printWhiteBlack: white background and black character\n')
 
-    with printWhiteBlack_2():
-        print(u'printWhiteBlack_2:白底黑字输出（直接传入16进制参数）\n')
+    with PrintWhiteBlack_2():
+        print(u'printWhiteBlack_2: white background and black character（pass hex args）\n')
 
-    with printYellowRed():
-        print(u'printYellowRed:黄底红字输出\n')
+    with PrintYellowRed():
+        print(u'printYellowRed: yellow background and red character\n')
