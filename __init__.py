@@ -16,8 +16,6 @@ Provide Color Support for all kinds of shell Stdin
 """
 __version__ = '0.0.1'
 
-__all__ = ['color', ]
-
 import platform
 
 
