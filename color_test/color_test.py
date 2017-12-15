@@ -1,14 +1,17 @@
 # -*- coding:utf-8 -*-
 
 import os
+import sys
 
-os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+color_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'color')
+print(os.path.dirname(color_path))
+sys.path.append(os.path.dirname(color_path))
 
 import color
 
 if __name__ == '__main__':
-    print('isLinux?%r' % color.islinux())
-    print('isWindows?%r' % iswin())
+    # print('isLinux?%r' % color.islinux())
+    # print('isWindows?%r' % color.iswin())
 
     color.print_dark_red({'a': 1, 'b': 2}, {'c': 3}, end='')
     color.print_dark_green([1, 2, 3], 4, sep='*', end='\n')
