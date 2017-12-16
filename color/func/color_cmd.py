@@ -228,7 +228,7 @@ print_map = {'darkblue': PrintDarkBlue,
              'pink': PrintPink,
              'yellow': PrintYellow,
              'white': PrintWhite,
-
+             'gray': PrintDarkGray,
              'blank': PrintBlank}
 
 

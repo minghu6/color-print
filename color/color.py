@@ -67,8 +67,26 @@ def print_white(*objs, **kwargs):
     print_color(*objs, color='white', **kwargs)
 
 
+def print_dark_gray(*objs, **kwargs):
+    print_color(*objs, color='dark gray', **kwargs)
+
+
 def print_dark_pink(*objs, **kwargs):
     print_color(*objs, color='darkpink', **kwargs)
+
+
+def print_pink(*objs, **kwargs):
+    print_color(*objs, color='pink', **kwargs)
+
+
+def print_dark_blue(*objs, **kwargs):
+    """
+    Belive it ,It's an ugly print-color.
+    Blue makes you blue :(
+    :param obj:
+    :return:
+    """
+    print_color(*objs, color='dark blue', **kwargs)
 
 
 def print_blue(*objs, **kwargs):
@@ -85,16 +103,32 @@ def print_dark_red(*objs, **kwargs):
     print_color(*objs, color='darkred', **kwargs)
 
 
+def print_red(*objs, **kwargs):
+    print_color(*objs, color='red', **kwargs)
+
+
 def print_dark_skyblue(*objs, **kwargs):
     print_color(*objs, color='darkskyblue', **kwargs)
+
+
+def print_skyblue(*objs, **kwargs):
+    print_color(*objs, color='skyblue', **kwargs)
 
 
 def print_dark_green(*objs, **kwargs):
     print_color(*objs, color='darkgreen', **kwargs)
 
 
+def print_green(*objs, **kwargs):
+    print_color(*objs, color='green', **kwargs)
+
+
 def print_dark_yellow(*objs, **kwargs):
     print_color(*objs, color='darkyellow', **kwargs)
+
+
+def print_yellow(*objs, **kwargs):
+    print_color(*objs, color='yellow', **kwargs)
 
 
 def print_blank(*objs, **kwargs):
@@ -119,7 +153,8 @@ color_dict = {'green': print_dark_green,
               'red': print_dark_red,
               'blue': print_blue,
               'white': print_white,
-              'purple': print_dark_pink}
+              'purple': print_dark_pink,
+              'gray': print_dark_gray}
 
 print_map = {'info': color_dict['darkskyblue'],
              'ok': color_dict['green'],
@@ -161,7 +196,8 @@ if __name__ == '__main__':
 
     print_dark_pink('abc' + 'def')
     print_blue(print_blue)
-    print_white('White Char')
+    print_white('white')
+    print_dark_gray('dark gray')
 
     print_info('info')
     print_ok('ok means that exec action succeed')
