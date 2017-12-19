@@ -15,6 +15,8 @@ from __future__ import absolute_import
 
 import sys
 import platform
+import io
+from contextlib import contextmanager
 
 __all__ = ['color_dict',
            'print_map',
@@ -41,6 +43,37 @@ def _remove_key(dic, keys):
     return {_key: dic[_key] for _key in dic if _key not in set(keys)}
 
 
+@contextmanager
+def redirect_color(color, stream=sys.stdout):
+    origin_stdout, origin_stderr = sys.stdout, sys.stderr
+    if sys.version_info.major == 2:
+        buffer = io.BytesIO()
+    else:
+        buffer = io.StringIO()
+    
+    try:
+        if stream == sys.stdout:
+            sys.stdout = buffer
+        elif stream == sys.stderr:
+            sys.stderr = buffer
+        yield None
+    finally:
+        content = buffer.getvalue()
+        
+        if stream == origin_stdout:
+            sys.stdout = stream
+        elif stream == origin_stderr:
+            sys.stderr = stream
+
+        if content and content[-1] == '\n':
+            content = content[:-1]
+            end = '\n'
+        else:
+            end = ''
+
+        print_color(content, color=color, end=end)
+
+
 def print_color(*objs, **kwargs):
     _end = kwargs.get('end', '\n')
     _sep = kwargs.get('sep', ' ')
@@ -53,7 +86,7 @@ def print_color(*objs, **kwargs):
             print(end=_end, **kwargs)
 
     elif islinux():
-        [print(sh.UseStyle(obj, fore=_color), end=_sep, sep='', **kwargs)
+        [print(sh.use_style(obj, fore=_color), end=_sep, sep='', **kwargs)
          for obj in objs]
 
         print(end=_end, **kwargs)

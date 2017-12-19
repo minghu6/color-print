@@ -34,3 +34,19 @@ if __name__ == '__main__':
     # color.print_warning('print_warning is too long')
     # color.print_error('error')
     # color.print_err('print_error is too long')
+    
+    with color.redirect_color('red'):
+        print('redirect red')
+
+    with color.redirect_color('yellow'):
+        print('redirect yellow')
+
+    with color.redirect_color('gray'):
+        print('redirect gray', end='')
+    
+    with color.redirect_color('gray'):
+        print('', end='\n')
+
+    print('end1')
+    print('end2')
+    print('end3')

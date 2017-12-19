@@ -13,6 +13,7 @@ from __future__ import print_function
 import ctypes
 import sys
 
+
 STD_INPUT_HANDLE = -10
 STD_OUTPUT_HANDLE = -11
 STD_ERROR_HANDLE = -12
@@ -297,3 +298,4 @@ if __name__ == '__main__':
 
     with PrintYellowRed():
         print(u'printYellowRed: yellow background and red character\n')
+

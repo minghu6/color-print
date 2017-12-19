@@ -110,7 +110,7 @@ def can_start_colorprint():
         return False
 
 
-def UseStyle(obj, fore='', mode='', back=''):
+def use_style(obj, fore='', mode='', back=''):
     mode = '%s' % STYLE['mode'][mode] if mode in STYLE['mode'] else ''
 
     fore = '%s' % STYLE['fore'][fore] if fore in STYLE['fore'] else ''
@@ -132,41 +132,41 @@ def UseStyle(obj, fore='', mode='', back=''):
 
 
 def test_color():
-    print((UseStyle('normal show')))
+    print((use_style('normal show')))
     print('')
 
     print("test show normal")
-    print((UseStyle('high-light', mode='bold')), end=' ')
-    print((UseStyle('underline', mode='underline')), end=' ')
-    print((UseStyle('glint', mode='blink')), end=' ')
-    print((UseStyle('inverse', mode='invert')), end=' ')
-    print((UseStyle('invisiable', mode='hide')), end=' ')
+    print((use_style('high-light', mode='bold')), end=' ')
+    print((use_style('underline', mode='underline')), end=' ')
+    print((use_style('glint', mode='blink')), end=' ')
+    print((use_style('inverse', mode='invert')), end=' ')
+    print((use_style('invisiable', mode='hide')), end=' ')
     print('')
 
     print("test frontground")
-    print(UseStyle('black', fore='black'), end=' ')
-    print(UseStyle('red', fore='red'), end=' ')
-    print(UseStyle('green', fore='green'), end=' ')
-    print(UseStyle('yellow', fore='yellow'), end=' ')
-    print(UseStyle('blue', fore='blue'), end=' ')
-    print(UseStyle('purple', fore='purple'), end=' ')
-    print(UseStyle('cyan', fore='cyan'), end=' ')
-    print(UseStyle('white', fore='white'))
-    print(UseStyle('origin', fore='blank'))
+    print(use_style('black', fore='black'), end=' ')
+    print(use_style('red', fore='red'), end=' ')
+    print(use_style('green', fore='green'), end=' ')
+    print(use_style('yellow', fore='yellow'), end=' ')
+    print(use_style('blue', fore='blue'), end=' ')
+    print(use_style('purple', fore='purple'), end=' ')
+    print(use_style('cyan', fore='cyan'), end=' ')
+    print(use_style('white', fore='white'))
+    print(use_style('origin', fore='blank'))
     print('')
 
     print("test background")
-    print(UseStyle('black', back='black'), end=' ')
-    print(UseStyle('red', back='red'), end=' ')
-    print(UseStyle('green', back='green'), end=' ')
-    print(UseStyle('yellow', back='yellow'), end=' ')
-    print(UseStyle('blue', back='blue'), end=' ')
-    print(UseStyle('purple', back='purple'), end=' ')
-    print(UseStyle('cyan', back='cyan'), end=' ')
-    print(UseStyle('white', back='white'))
+    print(use_style('black', back='black'), end=' ')
+    print(use_style('red', back='red'), end=' ')
+    print(use_style('green', back='green'), end=' ')
+    print(use_style('yellow', back='yellow'), end=' ')
+    print(use_style('blue', back='blue'), end=' ')
+    print(use_style('purple', back='purple'), end=' ')
+    print(use_style('cyan', back='cyan'), end=' ')
+    print(use_style('white', back='white'))
     print('')
 
 
 if __name__ == '__main__':
     test_color()
-    print(UseStyle([1, 2, 3], fore='green'))
+    print(use_style([1, 2, 3], fore='green'))
