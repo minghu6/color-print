@@ -47,6 +47,14 @@ if __name__ == '__main__':
     with color.redirect_color('gray'):
         print('', end='\n')
 
+    try:
+        1 / 0
+    except Exception as ex:
+        import logging
+
+        with color.redirect_color('red', sys.stderr):
+            logging.error(ex)
+
     print('end1')
     print('end2')
     print('end3')
