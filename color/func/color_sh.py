@@ -62,6 +62,7 @@ STYLE = {
 
             'cyan': 36,
             'darkskyblue': 36,
+            'skyblue': 36,
 
             'white': 37,
             'blank': 0,

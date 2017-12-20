@@ -19,32 +19,31 @@ if __name__ == '__main__':
     color.print_green('green')
     color.print_dark_skyblue('dark skyblue')
     color.print_skyblue('skyblue')
-    color.print_dark_yellow('dark yellow')
     color.print_yellow('yellow')
-    color.print_dark_pink('dark pink')
-    color.print_pink('pink')
-    color.print_dark_blue('dark blue')
+    color.print_purple('purple')
     color.print_blue('blue')
     color.print_white('White Char')
     color.print_dark_gray('dark gray')
 
-    # color.print_info('info')
-    # color.print_ok('ok means that exec action succeed')
-    # color.print_warning('warning')
-    # color.print_warning('print_warning is too long')
-    # color.print_error('error')
-    # color.print_err('print_error is too long')
+    color.print_normal('normal for normal words')
+    color.print_italic('italic for comment and other like italic font usage')
+    color.print_bold('bold use like bold font')
+    color.print_ok('ok means that exec action succeed')
+    color.print_warning('warning')
+    color.print_warning('print_warning is too long')
+    color.print_error('error')
+    color.print_err('print_error is too long')
     
-    with color.redirect_color('red'):
+    with color.redirect_red():
         print('redirect red')
 
-    with color.redirect_color('yellow'):
+    with color.redirect_yellow():
         print('redirect yellow')
 
-    with color.redirect_color('gray'):
+    with color.redirect_gray():
         print('redirect gray', end='')
     
-    with color.redirect_color('gray'):
+    with color.redirect_gray():
         print('', end='\n')
 
     try:
@@ -52,7 +51,7 @@ if __name__ == '__main__':
     except Exception as ex:
         import logging
 
-        with color.redirect_color('red', sys.stderr):
+        with color.redirect_red(sys.stderr):
             logging.error(ex)
 
     print('end1')

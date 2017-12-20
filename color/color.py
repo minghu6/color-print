@@ -18,11 +18,33 @@ import platform
 import io
 from contextlib import contextmanager
 
-__all__ = ['color_dict',
-           'print_map',
-           'print_info',
+
+__all__ = ['color_map',
+           'print_italic',
+           'print_bold',
+           'print_normal',
            'print_warn', 'print_warning',
-           'print_err', 'print_error']
+           'print_err', 'print_error',
+           'print_dark_red',
+           'print_red',
+           'print_dark_green',
+           'print_green',
+           'print_dark_skyblue',
+           'print_skyblue',
+           'print_yellow',
+           'print_purple',
+           'print_blue',
+           'print_gray',
+           'redirect_darkred',
+           'redirect_red',
+           'redirect_darkgreen',
+           'redirect_green',
+           'redirect_darkskyblue',
+           'redirect_skyblue',
+           'redirect_yellow',
+           'redirect_purple',
+           'redirect_blue',
+           'redirect_gray']
 
 
 def iswin():
@@ -44,7 +66,7 @@ def _remove_key(dic, keys):
 
 
 @contextmanager
-def redirect_color(color, stream=sys.stdout):
+def _redirect_color(color, stream=sys.stdout):
     origin_stdout, origin_stderr = sys.stdout, sys.stderr
     if sys.version_info.major == 2:
         buffer = io.BytesIO()
@@ -71,10 +93,50 @@ def redirect_color(color, stream=sys.stdout):
         else:
             end = ''
 
-        print_color(content, color=color, end=end)
+        _print_color(content, color=color, end=end)
 
 
-def print_color(*objs, **kwargs):
+def redirect_red(*args, **kwargs):
+    return _redirect_color('red', *args, **kwargs)
+
+
+def redirect_darkred(*args, **kwargs):
+    return _redirect_color('darkred', *args, **kwargs)
+
+
+def redirect_green(*args, **kwargs):
+    return _redirect_color('green', *args, **kwargs)
+
+
+def redirect_darkgreen(*args, **kwargs):
+    return _redirect_color('darkgreen', *args, **kwargs)
+
+
+def redirect_darkskyblue(*args, **kwargs):
+    return _redirect_color('darkskyblue', *args, **kwargs)
+
+
+def redirect_skyblue(*args, **kwargs):
+    return _redirect_color('skyblue', *args, **kwargs)
+
+
+def redirect_yellow(*args, **kwargs):
+    return _redirect_color('yellow', *args, **kwargs)
+
+
+def redirect_blue(*args, **kwargs):
+    return _redirect_color('blue', *args, **kwargs)
+
+
+def redirect_gray(*args, **kwargs):
+    return _redirect_color('gray', *args, **kwargs)
+
+
+def redirect_purple(*args, **kwargs):
+    return _redirect_color('purple', *args, **kwargs)
+
+
+def _print_color(*objs, **kwargs):
     _end = kwargs.get('end', '\n')
     _sep = kwargs.get('sep', ' ')
     _color = kwargs.get('color', 'blank')
@@ -97,144 +159,117 @@ def print_color(*objs, **kwargs):
 
 
 def print_white(*objs, **kwargs):
-    print_color(*objs, color='white', **kwargs)
+    _print_color(*objs, color='white', **kwargs)
 
 
 def print_dark_gray(*objs, **kwargs):
-    print_color(*objs, color='dark gray', **kwargs)
+    _print_color(*objs, color='dark gray', **kwargs)
+
+
+def print_gray(*objs, **kwargs):
+    _print_color(*objs, color='gray', **kwargs)
 
 
 def print_dark_pink(*objs, **kwargs):
-    print_color(*objs, color='darkpink', **kwargs)
+    _print_color(*objs, color='darkpink', **kwargs)
 
 
-def print_pink(*objs, **kwargs):
-    print_color(*objs, color='pink', **kwargs)
-
-
-def print_dark_blue(*objs, **kwargs):
-    """
-    Belive it ,It's an ugly print-color.
-    Blue makes you blue :(
-    :param obj:
-    :return:
-    """
-    print_color(*objs, color='dark blue', **kwargs)
+def print_purple(*objs, **kwargs):
+    _print_color(*objs, color='purple', **kwargs)
 
 
 def print_blue(*objs, **kwargs):
-    """
-    Belive it ,It's an ugly print-color.
-    Blue makes you blue :(
-    :param obj:
-    :return:
-    """
-    print_color(*objs, color='blue', **kwargs)
+    _print_color(*objs, color='blue', **kwargs)
 
 
 def print_dark_red(*objs, **kwargs):
-    print_color(*objs, color='darkred', **kwargs)
+    _print_color(*objs, color='darkred', **kwargs)
 
 
 def print_red(*objs, **kwargs):
-    print_color(*objs, color='red', **kwargs)
+    _print_color(*objs, color='red', **kwargs)
 
 
 def print_dark_skyblue(*objs, **kwargs):
-    print_color(*objs, color='darkskyblue', **kwargs)
+    _print_color(*objs, color='darkskyblue', **kwargs)
 
 
 def print_skyblue(*objs, **kwargs):
-    print_color(*objs, color='skyblue', **kwargs)
+    _print_color(*objs, color='skyblue', **kwargs)
 
 
 def print_dark_green(*objs, **kwargs):
-    print_color(*objs, color='darkgreen', **kwargs)
+    _print_color(*objs, color='darkgreen', **kwargs)
 
 
 def print_green(*objs, **kwargs):
-    print_color(*objs, color='green', **kwargs)
-
-
-def print_dark_yellow(*objs, **kwargs):
-    print_color(*objs, color='darkyellow', **kwargs)
+    _print_color(*objs, color='green', **kwargs)
 
 
 def print_yellow(*objs, **kwargs):
-    print_color(*objs, color='yellow', **kwargs)
+    _print_color(*objs, color='yellow', **kwargs)
 
 
 def print_blank(*objs, **kwargs):
-    print_color(*objs, color='blank', **kwargs)
+    _print_color(*objs, color='blank', **kwargs)
 
 
 ################################################################################
 # Application layer encapsulation
 #
-# 4 Kind of Print:
-#
-# print Common Information         : print_info
-# print Succeed Information        : print_ok
-# print Warinng Information        : print_warn or print_warning
-# print Error Information          : print_err or print_error
-#
+# 6 Kind of Print:
+# default color theme:
+#   print_italic   gray
+#   print_bold     skyblue
+#   print_normal   white
+#   print_ok       darkgreen
+#   print_warn     yellow
+#   print_err      red
 # You can also configure them with color_dict and print_map
 ################################################################################
-color_dict = {'green': print_dark_green,
-              'darkskyblue': print_dark_skyblue,
-              'yellow': print_dark_yellow,
-              'red': print_dark_red,
-              'blue': print_blue,
-              'white': print_white,
-              'purple': print_dark_pink,
-              'gray': print_dark_gray}
-
-print_map = {'info': color_dict['darkskyblue'],
-             'ok': color_dict['green'],
-             'warning': color_dict['yellow'],
-             'error': color_dict['red']}
+DARKRED = 'darkred'
+RED = 'red'
+DARKGREEN = 'darkgreen'
+GREEN = 'green'
+DARKSKYBLUE = 'darkskyblue'
+SKYBLUE = 'skyblue'
+YELLOW = 'yellow'
+PURPLE = 'purple'
+BLUE = 'blue'
+GRAY = 'gray'
+WHITE = 'white'
 
 
-def print_info(*objs, **kwargs): print_map['info'](*objs, **kwargs)
+color_map = {'italic': GRAY,
+             'bold': SKYBLUE,
+             'normal': WHITE,
+             'ok': DARKGREEN,
+             'warning': YELLOW,
+             'error': RED}
 
 
-def print_ok(*objs, **kwargs): print_map['ok'](*objs, **kwargs)
+def print_italic(*objs, **kwargs): _print_color(color=color_map['italic'], *objs, **kwargs)
 
 
-def print_warning(*objs, **kwargs): print_map['warning'](*objs, **kwargs)
+def print_bold(*objs, **kwargs): _print_color(color=color_map['bold'], *objs, **kwargs)
 
 
-def print_warn(*objs, **kwargs): print_warning(*objs,
-                                               **kwargs)  # print_warning is too long
+def print_normal(*objs, **kwargs): _print_color(color=color_map['normal'], *objs, **kwargs)
+
+
+def print_ok(*objs, **kwargs):  _print_color(color=color_map['ok'], *objs, **kwargs)
+
+
+def print_warning(*objs, **kwargs):  _print_color(color=color_map['warning'], *objs, **kwargs)
+
+
+def print_warn(*objs, **kwargs):  _print_color(color=color_map['warning'], *objs, **kwargs)
 
 
 def print_error(*objs, **kwargs):
     if 'file' not in kwargs:
         kwargs['file'] = sys.stderr
-    print_map['error'](*objs, **kwargs)
+    _print_color(color=color_map['error'], *objs, **kwargs)
 
 
-def print_err(*objs, **kwargs): print_error(*objs,
-                                            **kwargs)  # print_error is too long
-
-
-if __name__ == '__main__':
-    print('isLinux?%r' % islinux())
-    print('isWindows?%r' % iswin())
-
-    print_dark_red({'a': 1, 'b': 2}, {'c': 3}, end='')
-    print_dark_green([1, 2, 3], 4, sep='*', end='\n')
-    print_dark_skyblue((1, 2, 3))
-    print_dark_yellow({1, 2, 3})
-
-    print_dark_pink('abc' + 'def')
-    print_blue(print_blue)
-    print_white('white')
-    print_dark_gray('dark gray')
-
-    print_info('info')
-    print_ok('ok means that exec action succeed')
-    print_warning('warning')
-    print_warning('print_warning is too long')
-    print_error('error')
-    print_err('print_error is too long')
+def print_err(*objs, **kwargs):  _print_color(color=color_map['error'], *objs, **kwargs)  # print_error is too long
