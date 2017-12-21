@@ -163,7 +163,7 @@ def print_white(*objs, **kwargs):
 
 
 def print_dark_gray(*objs, **kwargs):
-    _print_color(*objs, color='dark gray', **kwargs)
+    _print_color(*objs, color='darkgray', **kwargs)
 
 
 def print_gray(*objs, **kwargs):
@@ -241,7 +241,7 @@ WHITE = 'white'
 
 
 color_map = {'italic': GRAY,
-             'bold': SKYBLUE,
+             'bold': PURPLE,
              'normal': WHITE,
              'ok': DARKGREEN,
              'warning': YELLOW,

@@ -1,5 +1,8 @@
 # -*- coding:utf-8 -*-
 
+from __future__ import print_function
+from __future__ import absolute_import
+
 import os
 import sys
 
@@ -42,7 +45,7 @@ if __name__ == '__main__':
 
     with color.redirect_gray():
         print('redirect gray', end='')
-    
+
     with color.redirect_gray():
         print('', end='\n')
 

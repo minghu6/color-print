@@ -44,6 +44,8 @@ STYLE = {
     'fore':
         {   # frontground
             'black': 30,
+            'darkgray': 30,
+            'gray': 30,
 
             'red': 31,
             'darkred': 31,
