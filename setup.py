@@ -28,7 +28,7 @@ setup(
     name='color_print',
     version=__version__,
     packages=find_packages(),
-    py_modules=['color']
+    py_modules=['color'],
     include_package_data=True,
     license='BSD License',
     description='A color print wrapper',

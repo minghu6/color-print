@@ -248,6 +248,12 @@ color_map = {'italic': GRAY,
              'error': RED}
 
 
+def print_info(*objs, **kwargs):
+    import warnings
+    warnings.warn("print_info is deprecated, use print_normal, print_bold or print_italic to instead.", DeprecationWarning)
+    _print_color(color='blue', *objs, **kwargs)
+
+
 def print_italic(*objs, **kwargs): _print_color(color=color_map['italic'], *objs, **kwargs)
 
 
