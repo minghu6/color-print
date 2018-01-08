@@ -13,6 +13,9 @@ sys.path.append(os.path.dirname(color_path))
 import color
 
 if __name__ == '__main__':
+    import logging
+    import logging.handlers
+    import io
 
     color.print_dark_red('dark red')
     color.print_red('red')
@@ -54,6 +57,22 @@ if __name__ == '__main__':
 
         with color.redirect_red(sys.stderr):
             logging.error(ex)
+
+    logger = logging.getLogger('logger')
+    logger.setLevel(logging.INFO)
+
+    formatter = logging.Formatter('%(asctime)-15s [%(levelname)s] %(process)-8d %(message)s')
+
+    if sys.version_info.major == 2:
+        buffer = io.BytesIO()
+    else:
+        buffer = io.StringIO()
+    sh = logging.StreamHandler(stream=buffer)
+    sh.setFormatter(formatter)
+    logger.addHandler(sh)
+
+    logger.info('stream logger redirect yellow')
+    color.print_yellow(buffer.getvalue())
 
     print('end1')
     print('end2')
