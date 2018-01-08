@@ -10,11 +10,9 @@ color_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file
 print(os.path.dirname(color_path))
 sys.path.append(os.path.dirname(color_path))
 
-from color import color
+import color
 
 if __name__ == '__main__':
-    print('isLinux %r' % color.islinux())
-    print('isWindows %r' % color.iswin())
 
     color.print_dark_red('dark red')
     color.print_red('red')
